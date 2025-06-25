@@ -1,6 +1,10 @@
 pipeline {
     agent any
 
+    tools {
+        maven 'Maven' // Match this with name given in Global Tool Configuration
+    }
+
     stages {
         stage('Checkout') {
             steps {
@@ -23,7 +27,7 @@ pipeline {
 
     post {
         always {
-            junit 'test-output/testng-results.xml'
+            junit 'test-output/testng-results.xml' // Adjust this if your reports are elsewhere
         }
     }
 }
