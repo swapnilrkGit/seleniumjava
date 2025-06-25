@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     tools {
-        maven 'maven'   // 👈 This must match the name you gave above
+        maven 'Maven'
     }
 
     stages {
@@ -27,7 +27,10 @@ pipeline {
 
     post {
         always {
-            junit 'test-output/testng-results.xml'
+            // ✅ This ensures `junit` has access to workspace context
+            node {
+                junit 'test-output/testng-results.xml'
+            }
         }
     }
 }
