@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     tools {
-        maven 'maven'  // ✅ Use correct tool name from Jenkins config
+        maven 'maven'  // This must match the Maven tool name in Jenkins
     }
 
     stages {
@@ -27,7 +27,8 @@ pipeline {
 
     post {
         always {
-            junit 'test-output/testng-results.xml'  // ✅ No nested node
+            // Make sure this file path matches your actual report path (like test-output/testng-results.xml)
+            junit 'test-output/testng-results.xml'
         }
     }
 }
