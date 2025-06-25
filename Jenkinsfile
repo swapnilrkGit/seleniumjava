@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     tools {
-        maven 'maven'  // This must match the Maven tool name in Jenkins
+        maven 'maven'
     }
 
     stages {
@@ -14,21 +14,26 @@ pipeline {
 
         stage('Build') {
             steps {
-                bat 'mvn clean compile'
+                dir('TESTCICD') {
+                    bat 'mvn clean compile'
+                }
             }
         }
 
         stage('Test') {
             steps {
-                bat 'mvn test'
+                dir('TESTCICD') {
+                    bat 'mvn test'
+                }
             }
         }
     }
 
     post {
         always {
-            // Make sure this file path matches your actual report path (like test-output/testng-results.xml)
-            junit 'test-output/testng-results.xml'
+            dir('TESTCICD') {
+                junit 'test-output/testng-results.xml'
+            }
         }
     }
 }
