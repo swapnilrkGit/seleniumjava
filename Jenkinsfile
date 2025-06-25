@@ -2,8 +2,7 @@ pipeline {
     agent any
 
     tools {
-        maven 'Maven 3.9.6'   // Replace with your Jenkins-configured Maven name
-        jdk 'JDK 11'          // Replace with your Jenkins-configured JDK
+        maven 'maven'  // This must match the Maven tool name in Jenkins
     }
 
     stages {
@@ -28,6 +27,7 @@ pipeline {
 
     post {
         always {
+            // Make sure this file path matches your actual report path (like test-output/testng-results.xml)
             junit 'test-output/testng-results.xml'
         }
     }
