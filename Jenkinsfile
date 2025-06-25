@@ -29,11 +29,5 @@ pipeline {
         }
     }
 
-    post {
-        always {
-            dir('TESTCICD') {
-                junit 'test-output/testng-results.xml'
-            }
-        }
-    }
+    
 }
