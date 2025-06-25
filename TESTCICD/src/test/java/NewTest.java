@@ -5,5 +5,6 @@ public class NewTest {
   public void f() {
 	  System.out.println("hellow");
 	  System.out.println("Test");
+	  System.out.println("Test");
   }
 }
