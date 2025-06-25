@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     tools {
-        maven 'Maven' // Match this with name given in Global Tool Configuration
+        maven 'maven'   // 👈 This must match the name you gave above
     }
 
     stages {
@@ -27,7 +27,7 @@ pipeline {
 
     post {
         always {
-            junit 'test-output/testng-results.xml' // Adjust this if your reports are elsewhere
+            junit 'test-output/testng-results.xml'
         }
     }
 }
