@@ -26,7 +26,7 @@ pipeline {
     post {
         always {
             // Publish TestNG results
-            junit 'test-output/testng-results.xml'
+            junit 'TESTCICD/target/surefire-reports/*.xml'
         }
     }
 }
