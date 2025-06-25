@@ -15,3 +15,25 @@ pipeline {
         stage('Build') {
             steps {
                 dir('TESTCICD') {
+                    bat 'mvn clean compile'
+                }
+            }
+        }
+
+        stage('Test') {
+            steps {
+                dir('TESTCICD') {
+                    bat 'mvn test'
+                }
+            }
+        }
+    }
+
+    post {
+        always {
+            dir('TESTCICD') {
+                junit 'test-output/testng-results.xml'
+            }
+        }
+    }
+}
