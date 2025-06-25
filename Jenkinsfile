@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     tools {
-        maven 'Maven'
+        maven 'maven'  // ✅ Use correct tool name from Jenkins config
     }
 
     stages {
@@ -27,10 +27,7 @@ pipeline {
 
     post {
         always {
-            // ✅ This ensures `junit` has access to workspace context
-            node {
-                junit 'test-output/testng-results.xml'
-            }
+            junit 'test-output/testng-results.xml'  // ✅ No nested node
         }
     }
 }
