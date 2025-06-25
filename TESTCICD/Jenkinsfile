@@ -1,10 +1,7 @@
 pipeline {
     agent any
 
-    tools {
-        maven 'Maven 3.9.6'       // ✅ Make sure this matches your Jenkins tool name
-        jdk 'JDK 11'              // ✅ Or whatever JDK you've configured in Jenkins
-    }
+   
 
     stages {
         stage('Checkout Code') {
